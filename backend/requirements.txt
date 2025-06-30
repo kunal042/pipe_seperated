@@ -1,0 +1,8 @@
+flask
+pandas 
+openpyxl
+flasgger
+flask-cors
+asgiref 
+uvicorn
+gunicorn

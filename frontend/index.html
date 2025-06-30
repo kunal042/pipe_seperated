@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel to CSV Converter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="icon">
+            📊
+        </div>
+        <h1>Excel to CSV Converter</h1>
+        <p class="description" >Upload your Excel (.xlsx) file and convert it to CSV with just one click</p>
+        
+        <div class="upload-area" id="uploadArea">
+            <input type="file" id="fileInput" class="file-input" accept=".xlsx, .xls">
+            <label for="fileInput" class="file-label" id="fileLabel">Choose Excel File </label>
+            <div class="file-name" id="fileName" >No File selected</div>
+
+        </div>
+
+        <div class="progress-conatiner" id="progressConatiner" >
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <button class="btn btn-primary" id="convertBtn" disabled="disabled">Convert</button>
+        
+        <button class="btn btn-success" id="downloadBtn" style="display: none;" >Downlaod</button>
+        
+        <div class="loader" id="loader"></div>
+        <div class="status" id="status"></div>
+        <div class="countdown" id="countdown"></div>
+
+    </div>
+    
+    <script src="scripts.js"></script>
+</body>
+</html>

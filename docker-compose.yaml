@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  flask_app:
+    container_name: backend
+    build:
+      context: ./flask_app
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./flask_app:/app
+    environment:
+      - FLASK_ENV=development
+
+  frontend:
+    container_name: pipe_frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+    volumes:
+      - ./frontend:/usr/share/nginx/html:ro
+
