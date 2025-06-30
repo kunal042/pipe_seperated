@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  flask_app:
+  backend:
     container_name: backend
     build:
       context: ./flask_app
@@ -9,7 +9,7 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ./flask_app:/app
+      - ./backend:/app
     environment:
       - FLASK_ENV=development
 
