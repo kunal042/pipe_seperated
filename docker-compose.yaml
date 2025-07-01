@@ -1,3 +1,32 @@
+# version: '3.8'
+
+# services:
+#   backend:
+#     container_name: pipe_backend
+#     build:
+#       context: ./backend
+#       dockerfile: Dockerfile
+#     ports:
+#       - "8000:8000"
+#     volumes:
+#       - ./backend:/backend
+#     environment:
+#       - FLASK_ENV=development
+
+#   frontend:
+#     container_name: pipe_frontend
+#     build:
+#       context: ./frontend
+#       dockerfile: Dockerfile
+#     ports:
+#       - "3000:80"  # Changed from 80 to match typical React/Vue ports
+#     # volumes:
+#     #   - ./frontend:/app  # Fixed incomplete volume declaratio
+#     volumes:
+#       - ./frontend:/usr/share/nginx/html  # Live-reload files (optional)n
+
+
+
 version: '3.8'
 
 services:
@@ -9,9 +38,11 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ./backend:/app
+      - ./backend:/backend
     environment:
       - FLASK_ENV=development
+    networks:
+      - app-network
 
   frontend:
     container_name: pipe_frontend
@@ -19,6 +50,14 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
     ports:
-      - "3000:3000"  # Changed from 80 to match typical React/Vue ports
+      - "3000:80"
     volumes:
-      - ./frontend:/app  # Fixed incomplete volume declaration
+      - ./frontend:/usr/share/nginx/html
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
