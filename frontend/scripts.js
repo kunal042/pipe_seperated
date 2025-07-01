@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const formData = new FormData();
         formData.append('file', selectedFile);
 
-        fetch('http://52.205.141.17:8000/upload', {
+        fetch('http://52.73.195.10:8000/upload', {
             method: 'POST',
             body: formData
         })
@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.body.removeChild(link);
 
         setTimeout(() => {
-            fetch('http://52.205.141.17:8000/cleanup', {
+            fetch('http://52.73.195.10:8000/cleanup', {
                 method: 'DELETE',
             })
                 .then(() => {
