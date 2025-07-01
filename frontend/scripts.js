@@ -105,8 +105,9 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }, 1000);
 
-        const link = document.createElement('a');
-        link.href = downloadUrl;
+        // const link = document.createElement('a');
+        // link.href = downloadUrl;
+        const link = downloadUrl
         link.download = selectedFile.name.replace(/\.[^/.]+$/, "") + ".csv";
         document.body.appendChild(link);
         link.click();
