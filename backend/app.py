@@ -71,6 +71,7 @@ def upload_file():
         filename = secure_filename(file.filename)
         # print("File Name :",filename)
         input_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
         file.save(input_path)
 
@@ -94,7 +95,7 @@ def upload_file():
         if success :
             return jsonify({
                 'success' : True,
-                'output' : output_file,
+                'output' :  output_file,
                 'input' : input_path,
                 'message': "file Converted Sucsessfully!!"
 
@@ -105,8 +106,14 @@ def upload_file():
         return jsonify({'error' : 'Invalid file type. Only .xlsx files are allowed'}), 400
 
 
- 
 
+@app.route("/backend/output/<filename>")
+def download_file(filename):
+    attched = send_from_directory(OUTPUT_FOLDER, filename, as_attachment=True)
+    print("Attched --> ",attched)
+    return attched
+
+#F:\SK\pipe\backend\output\Staff_Attendance.xlsx_Pip_Sep_20250701_173129.csv
 
 @app.route('/cleanup', methods=['DELETE'])
 def manual_cleanup():

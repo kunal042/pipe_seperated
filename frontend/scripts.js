@@ -105,13 +105,18 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }, 1000);
 
-        const link = document.createElement('a');
-        link.href = downloadUrl;
-        // const link = downloadUrl
-        link.download = selectedFile.name.replace(/\.[^/.]+$/, "") + ".csv";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+            const link = document.createElement('a');
+
+            // Construct the full download URL
+            link.href = "http://52.73.195.10:8000/" + downloadUrl;
+            
+            // Set the filename for download
+            link.download = selectedFile.name.replace(/\.[^/.]+$/, "") + ".csv";
+
+            // Trigger the download
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
 
         setTimeout(() => {
             fetch('http://52.73.195.10:8000/cleanup', {
