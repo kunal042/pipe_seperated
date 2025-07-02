@@ -108,8 +108,13 @@ document.addEventListener('DOMContentLoaded', function () {
             const link = document.createElement('a');
 
             // Construct the full download URL
-            link.href = "http://52.73.195.10:8000/" + downloadUrl;
+            // link.href = "http://52.73.195.10:8000/" + downloadUrl;
+
+            link.href = window.location.protocol + "//52.73.195.10:8000" + downloadUrl;
+            console.log(link);
             
+
+
             // Set the filename for download
             link.download = selectedFile.name.replace(/\.[^/.]+$/, "") + ".csv";
 
